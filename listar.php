@@ -4,27 +4,25 @@
 include ("conexao.php");
 
 //Sql
-$sql = (NULL "SELECT * FROM" cursos);
+$sql = ("SELECT * FROM cursos");
 
 //Executar 
 $executar = mysqli_query($conexao, $sql);
 
 //Vetor
-$cursos =[];
+$cursos = [];
 
 //Indice    
-$indice = #0;
+$indice = 0;
 
 //Laço
-#while($linha = mysqli_fetch_assoc($executar))
+while($linha = mysqli_fetch_assoc($executar)){
     $cursos[$indice]['idCurso'] = $linha['idCurso'];
-    $cursos[$indice]['nomeCurso'] = $linha ['nomeCurso'];
-    $cursos[$indice]['valorCurso'] = $cursos ['valorcurso'];
-
+    $cursos[$indice]['nomeCurso'] = $linha['nomeCurso'];
+    $cursos[$indice]['valorCurso'] = $linha['valorCurso'];
+    
     $indice++;
-
-
-//JSON
-json_encode(['cursos'=>$cursos]);
-
-?>
+    }
+    
+    echo json_encode($cursos);
+    ?>
