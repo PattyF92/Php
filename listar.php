@@ -25,4 +25,7 @@ while($linha = mysqli_fetch_assoc($executar)){
     }
     
     echo json_encode($cursos);
+
+    //var_dump($cursos);
+
     ?>
